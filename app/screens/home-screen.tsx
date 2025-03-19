@@ -6,7 +6,7 @@ import { ServiceCard } from "@/app/components/ui/service-card"
 import { StatusBadge } from "@/app/components/ui/status-badge"
 import { BottomNavigation, BottomNavigationItem } from "@/app/components/ui/bottom-navigation"
 
-export default function HomeScreen({ onNavigate }: { onNavigate: (screen: string) => void }) {
+export default function HomeScreen({ onNavigate }: { onNavigate: (screen: string, id?:string) => void }) {
   const [searchQuery, setSearchQuery] = useState("")
   const [showNotification, setShowNotification] = useState(true)
 
@@ -167,7 +167,7 @@ export default function HomeScreen({ onNavigate }: { onNavigate: (screen: string
         <div className="mb-4">
           <div className="flex justify-between items-center mb-3">
             <h2 className="text-lg font-bold text-gray-800">Recharge Offers</h2>
-            <a href="#" className="text-emerald-500 font-medium text-sm">
+            <a href="#" onClick={(e)=>onNavigate("offers")} className="text-emerald-500 font-medium text-sm">
               View All
             </a>
           </div>

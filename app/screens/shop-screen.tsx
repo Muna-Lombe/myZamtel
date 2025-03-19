@@ -5,7 +5,7 @@ import { Search } from "@/app/components/ui/search"
 import { TabButton } from "@/app/components/ui/tab-button"
 import { StatusBadge } from "@/app/components/ui/status-badge"
 
-export default function ShopScreen({ onNavigate }: { onNavigate: (screen: string) => void }) {
+export default function ShopScreen({ onNavigate }: { onNavigate: (screen: string, productId?:string) => void }) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeCategory, setActiveCategory] = useState("all")
   const [cartCount, setCartCount] = useState(0)
@@ -161,7 +161,7 @@ export default function ShopScreen({ onNavigate }: { onNavigate: (screen: string
                 <div
                   key={product.id}
                   className="bg-white rounded-xl p-4 shadow-sm flex flex-col"
-                  onClick={() => onNavigate(`product-${product.id}`)}
+                  onClick={() => onNavigate('productDetail',`product-${product.id}`)}
                 >
                   <div className="flex justify-center mb-3">
                     <img
@@ -207,7 +207,7 @@ export default function ShopScreen({ onNavigate }: { onNavigate: (screen: string
                 <div
                   key={product.id}
                   className="flex items-center justify-between w-full bg-white p-4 rounded-xl shadow-sm"
-                  onClick={() => onNavigate(`product-${product.id}`)}
+                  onClick={() => onNavigate('productDetail',`product-${product.id}`)}
                 >
                   <div className="flex items-center gap-3">
                     <img

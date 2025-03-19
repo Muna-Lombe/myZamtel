@@ -18,7 +18,7 @@ import { Search } from "@/app/components/ui/search"
 import { TabButton } from "@/app/components/ui/tab-button"
   import { ActionCard } from "@/app/components/ui/action-card"
 
-  export default function DashboardScreen({ onNavigate }: { onNavigate: (screen: string) => void }) {
+  export default function DashboardScreen({ onNavigate }: { onNavigate: (screen: string, id?:string) => void }) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("all")
 
