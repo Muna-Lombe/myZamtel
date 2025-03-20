@@ -22,6 +22,12 @@ import ServicesScreen from "../screens/services-screen"
 import ShopScreen from "../screens/shop-screen"
 import ProductDetailScreen from "../screens/product-detail-screen"
 import CartScreen from "../screens/cart-screen"
+import NotificationsScreen from "../screens/notifications-screen"
+import PrivacyPolicyScreen from "../screens/privacy-policy-screen"
+import SecuritySettingsScreen from "../screens/security-settings-screen"
+import OfferDetailScreen from "../screens/offer-detail-screen"
+import CreateCustomNumberScreen from "../screens/create-custom-number-screen"
+import ServiceDetailScreen from "../screens/service-show-screen"
 
 export default function MobileApp() {
   const [currentScreen, setCurrentScreen] = useState("home")
@@ -49,6 +55,8 @@ export default function MobileApp() {
     switch (currentScreen) {
       case "home":
         return <HomeScreen onNavigate={handleNavigate} />
+      case "notifications":
+        return <NotificationsScreen onNavigate={handleNavigate}/>
       case "dashboard":
         return <DashboardScreen onNavigate={handleNavigate} />
       case "makePayment":
@@ -69,8 +77,14 @@ export default function MobileApp() {
         return <SideMenu onNavigate={handleNavigate} />
       case "profile":
         return <ProfileScreen onNavigate={handleNavigate} />
+      case "customNumber":
+        return <CreateCustomNumberScreen onNavigate={handleNavigate} />
       case "support":
         return <SupportScreen onNavigate={handleNavigate} />
+      case "privacy":
+        return <PrivacyPolicyScreen onNavigate={handleNavigate} />
+      case "security":
+        return <SecuritySettingsScreen onNavigate={handleNavigate} />
       case "editProfile":
         return <EditProfileScreen onNavigate={handleNavigate} />
       case "transferOptions":
@@ -81,10 +95,14 @@ export default function MobileApp() {
         return <OtherNetworksScreen onNavigate={handleNavigate} />
       case "offers":
         return <OffersScreen onNavigate={handleNavigate} />
+      case "offerDetail":
+        return <OfferDetailScreen onNavigate={handleNavigate} />
       case "help":
         return <HelpScreen onNavigate={handleNavigate} />
       case "services":
         return <ServicesScreen onNavigate={handleNavigate} />
+      case "serviceDetail":
+        return <ServiceDetailScreen onNavigate={handleNavigate} /> 
       case "shop":
         return <ShopScreen onNavigate={handleNavigate} />
       case "productDetail":
