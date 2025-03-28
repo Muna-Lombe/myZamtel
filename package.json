@@ -18,6 +18,7 @@
     "@react-navigation/native-stack": "^6.9.17",
     "date-fns": "4.1.0",
     "expo": "~50.0.5",
+    "expo-dev-client": "~3.3.12",
     "expo-status-bar": "~1.11.1",
     "lucide-react-native": "^0.344.0",
     "nativewind": "^4.0.1",
