@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Minus, Plus, Trash2, CreditCard } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-export default function CartScreen() {
+export default function CartScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [cartItems, setCartItems] = React.useState([
     {

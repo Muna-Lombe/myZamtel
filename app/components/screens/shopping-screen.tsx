@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Search, ShoppingBag, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-export default function ShoppingScreen() {
+export default function ShoppingScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = React.useState('');
 
@@ -93,7 +94,7 @@ export default function ShoppingScreen() {
                 <TouchableOpacity
                   key={category.id}
                   style={styles.categoryCard}
-                  onPress={() => navigation.navigate('Cart')}
+                  onPress={() => navigation.navigate('Cart' as never)}
                 >
                   <Image
                     source={category.image}
@@ -112,7 +113,7 @@ export default function ShoppingScreen() {
                 <TouchableOpacity
                   key={product.id}
                   style={styles.productCard}
-                  onPress={() => navigation.navigate('Cart')}
+                  onPress={() => navigation.navigate('Cart' as never)}
                 >
                   <Image
                     source={product.image}
@@ -134,7 +135,7 @@ export default function ShoppingScreen() {
 
       <TouchableOpacity 
         style={styles.cartButton}
-        onPress={() => navigation.navigate('Cart')}
+        onPress={() => navigation.navigate('Cart' as never)}
       >
         <ShoppingBag size={24} color="#fff" />
         <Text style={styles.cartButtonText}>View Cart</Text>

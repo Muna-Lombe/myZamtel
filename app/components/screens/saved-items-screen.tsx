@@ -3,14 +3,17 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList, Image }
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-type SavedItem = {
+
+type SavedItem  = {
   id: string;
   name: string;
   price: number;
   image: string;
   category: string;
   savedDate: string;
+  
 };
 
 const savedItems: SavedItem[] = [
@@ -50,7 +53,7 @@ const savedItems: SavedItem[] = [
 
 const categories = ['All', 'Electronics', 'Fashion', 'Home', 'Beauty'];
 
-export default function SavedItemsScreen() {
+export default function SavedItemsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [selectedCategory, setSelectedCategory] = useState('All');
 

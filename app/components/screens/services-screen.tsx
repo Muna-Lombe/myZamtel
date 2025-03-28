@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Wallet, CreditCard, Phone, ShoppingCart, Building2 } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-export default function ServicesScreen() {
+export default function ServicesScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   return (

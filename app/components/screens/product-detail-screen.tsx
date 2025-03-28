@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ShoppingCart, Star, Heart } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type RouteParams = {
   product: {
@@ -25,7 +26,13 @@ type RouteParams = {
 
 const { width } = Dimensions.get('window');
 
-export default function ProductDetailScreen() {
+
+type Props = {
+  onNavigate: ScreenProps['onNavigate'];
+  productId: string | null;
+
+}
+export default function ProductDetailScreen({productId, onNavigate }: Props) {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute();
   const { product } = route.params as RouteParams;
@@ -43,7 +50,7 @@ export default function ProductDetailScreen() {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.cartButton}
-          onPress={() => navigation.navigate('Cart')}
+          onPress={() => navigation.navigate('Cart' as never)}
         >
           <ShoppingCart size={24} color="#000" />
         </TouchableOpacity>
@@ -126,7 +133,7 @@ export default function ProductDetailScreen() {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.addToCartButton}
-          onPress={() => navigation.navigate('Cart')}
+          onPress={() => navigation.navigate('Cart' as never)}
         >
           <ShoppingCart size={20} color="#fff" />
           <Text style={styles.addToCartText}>Add to Cart</Text>

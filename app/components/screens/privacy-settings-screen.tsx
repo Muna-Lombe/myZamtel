@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Switch } from 're
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type PrivacySetting = {
   id: string;
@@ -58,7 +59,7 @@ const privacySettings: PrivacySetting[] = [
   },
 ];
 
-export default function PrivacySettingsScreen() {
+export default function PrivacySettingsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [settings, setSettings] = React.useState<Record<string, boolean>>({
     locationServices: true,
@@ -72,7 +73,7 @@ export default function PrivacySettingsScreen() {
   };
 
   const handleNavigation = (screen: keyof RootStackParamList) => {
-    navigation.navigate(screen);
+    navigation.navigate(screen as never);
   };
 
   return (

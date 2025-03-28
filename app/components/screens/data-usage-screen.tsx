@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type StorageItem = {
   name: string;
@@ -16,7 +17,7 @@ const storageItems: StorageItem[] = [
   { name: 'Media Files', size: '256.8 MB', type: 'media' },
 ];
 
-export default function DataUsageScreen() {
+export default function DataUsageScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   const handleClearCache = () => {

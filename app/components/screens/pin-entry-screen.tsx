@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Lock } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type RouteParams = {
   amount: number;
@@ -12,7 +13,7 @@ type RouteParams = {
   onSuccess: () => void;
 };
 
-export default function PinEntryScreen() {
+export default function PinEntryScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute();
   const { amount, recipient, type, onSuccess } = route.params as RouteParams;

@@ -1,42 +1,71 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
+  About:undefined;
+  Airtime: {
+    network?: string;
+    service?: string;
+  };
+  BankTransfer: undefined;
+  Chat: undefined;
+  Dashboard: undefined;
+  DataUsage: undefined;
+  EditProfile:undefined;
+  Help: undefined;
   Home: undefined;
-  Profile: undefined;
-  Settings: undefined;
-  SecuritySettings: undefined;
+  InternationalTransfer: undefined;
+  LanguageSettings: undefined;
+  MakePayment: undefined;
+  MobileMoney: undefined;
+  Notifications: undefined;
+  Offers: undefined;
+  OfferDetail: {
+    offer: {
+      id: string;
+      title: string;
+      description: string;
+      image: string;
+      validUntil: string;
+      category: string;
+      discount: string;
+    }
+  };
+  PayBills: undefined;
+  PaymentMethods: undefined;
+  PinEntry: undefined;
+  PrivacyPolicy: undefined;
+  PrivacySettings: undefined;
   ProductDetail: {
     product: {
       id: string;
       name: string;
       price: number;
-      description: string;
-      images: string[];
-      rating: number;
-      reviews: number;
-      seller: string;
-      category: string;
-      specifications: Record<string, string>;
+      description?: string;
+      images?: string[];
+      rating?: number;
+      reviews?: number;
+      seller?: string;
+      category?: string;
+      specifications?: Record<string, string>;
     };
   };
-  PrivacyPolicy: undefined;
-  LanguageSettings: undefined;
-  DataUsage: undefined;
-  PrivacySettings: undefined;
-  PaymentMethods: undefined;
-  SavedItems: undefined;
-  TransactionHistory: undefined;
-  Dashboard: undefined;
-  Services: undefined;
-  Shop: undefined;
-  Help: undefined;
-  Support: undefined;
-  PayBills: undefined;
-  MobileMoney: undefined;
-  Offers: undefined;
-  MakePayment: undefined;
-  Notifications: undefined;
+  Profile: undefined;
   ProfileVisibility: undefined;
+  RequestMoney: undefined;
+  SavedItems: undefined;
+  SecuritySettings: undefined;
+  SendMoney: undefined;
+  Services: undefined;
+  ServiceShow: {
+    serviceId: string;
+    serviceName: string;
+    serviceDescription: string;
+  };
+  Settings: undefined;
+  Shop: undefined;
+  Support: undefined;
+  Shopping: undefined;
+  TransactionHistory: undefined;
   TransactionPrivacy: undefined;
 };
 

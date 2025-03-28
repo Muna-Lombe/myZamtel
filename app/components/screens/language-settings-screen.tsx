@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type Language = {
   code: string;
@@ -21,7 +22,7 @@ const languages: Language[] = [
   { code: 'kaa', name: 'Kaonde', nativeName: 'Chikaonde', isSelected: false },
 ];
 
-export default function LanguageSettingsScreen() {
+export default function LanguageSettingsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [selectedLanguage, setSelectedLanguage] = React.useState('en');
 

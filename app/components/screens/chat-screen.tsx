@@ -13,6 +13,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type Message = {
   id: string;
@@ -21,7 +22,7 @@ type Message = {
   timestamp: Date;
 };
 
-export default function ChatScreen() {
+export default function ChatScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [messages, setMessages] = useState<Message[]>([
     {

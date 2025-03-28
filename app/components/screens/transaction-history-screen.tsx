@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenProps } from '@/types/props';
 
 type Transaction = {
   id: string;
@@ -52,7 +53,7 @@ const transactions: Transaction[] = [
 
 const filterOptions = ['All', 'Sent', 'Received', 'Payments', 'Withdrawals'];
 
-export default function TransactionHistoryScreen() {
+export default function TransactionHistoryScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation();
   const [selectedFilter, setSelectedFilter] = useState('All');
 

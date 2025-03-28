@@ -3,8 +3,9 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, TextInput } from 
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Building2, Wallet, User } from 'lucide-react-native';
+import { ScreenProps } from '@/types/props';
 
-export default function BankTransferScreen() {
+export default function BankTransferScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation();
   const [accountNumber, setAccountNumber] = React.useState('');
   const [amount, setAmount] = React.useState('');

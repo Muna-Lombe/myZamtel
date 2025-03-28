@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenProps } from '@/types/props';
 
 type PaymentMethod = {
   id: string;
@@ -39,7 +40,7 @@ const paymentMethods: PaymentMethod[] = [
   },
 ];
 
-export default function PaymentMethodsScreen() {
+export default function PaymentMethodsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation();
 
   const renderPaymentMethod = (method: PaymentMethod) => (

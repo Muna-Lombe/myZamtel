@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Phone, Wallet, User } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-export default function AirtimeScreen() {
+export default function AirtimeScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [phoneNumber, setPhoneNumber] = React.useState('');
   const [amount, setAmount] = React.useState('');

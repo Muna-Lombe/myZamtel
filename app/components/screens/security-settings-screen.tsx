@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Lock, Fingerprint, Bell, Shield, Key } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type SecurityOption = {
   id: string;
@@ -16,7 +17,7 @@ type SecurityOption = {
   onToggle?: (value: boolean) => void;
 };
 
-export default function SecuritySettingsScreen() {
+export default function SecuritySettingsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [biometricEnabled, setBiometricEnabled] = React.useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);

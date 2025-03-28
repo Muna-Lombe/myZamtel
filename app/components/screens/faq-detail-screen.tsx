@@ -10,6 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type FAQItem = {
   id: string;
@@ -57,7 +58,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-export default function FAQDetailScreen() {
+export default function FAQDetailScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [animations] = useState(() =>

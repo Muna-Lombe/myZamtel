@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, CreditCard, Building2, Receipt, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
-export default function MakePaymentScreen() {
+export default function MakePaymentScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [amount, setAmount] = React.useState('');
   const [selectedPayment, setSelectedPayment] = React.useState('');

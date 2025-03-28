@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type PolicySection = {
   id: string;
@@ -11,7 +12,7 @@ type PolicySection = {
   content: string;
 };
 
-export default function PrivacyPolicyScreen() {
+export default function PrivacyPolicyScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [activeTab, setActiveTab] = React.useState<'privacy' | 'terms'>('privacy');
 

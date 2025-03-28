@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'r
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type MenuItem = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -10,7 +11,7 @@ type MenuItem = {
   action: () => void;
 };
 
-export default function AboutScreen() {
+export default function AboutScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   const menuItems: MenuItem[] = [

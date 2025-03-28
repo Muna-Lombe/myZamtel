@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Wifi, Phone, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type Network = {
   id: string;
@@ -17,7 +18,7 @@ type Network = {
   }[];
 };
 
-export default function OtherNetworksScreen() {
+export default function OtherNetworksScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   const networks: Network[] = [

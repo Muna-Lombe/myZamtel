@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Tag, Calendar, MapPin, Phone, Globe } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type RouteParams = {
   offer: {
@@ -21,7 +22,7 @@ type RouteParams = {
   };
 };
 
-export default function OfferDetailScreen() {
+export default function OfferDetailScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute();
   const { offer } = route.params as RouteParams;

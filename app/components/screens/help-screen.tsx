@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'r
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type HelpCategory = {
   id: string;
@@ -18,7 +19,7 @@ type SupportOption = {
   action: () => void;
 };
 
-export default function HelpScreen() {
+export default function HelpScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   const helpCategories: HelpCategory[] = [
@@ -97,7 +98,7 @@ export default function HelpScreen() {
               <TouchableOpacity
                 key={category.id}
                 style={styles.categoryItem}
-                onPress={() => category.screen && navigation.navigate(category.screen)}
+                onPress={() => category.screen && navigation.navigate(category.screen as never)}
               >
                 <View style={styles.categoryIcon}>
                   <Ionicons name={category.icon} size={24} color="#60a5fa" />

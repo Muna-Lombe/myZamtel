@@ -17,6 +17,7 @@ import {
 } from 'lucide-react-native';
 import { NavigationProp, RootStackParamList } from '../../../types/navigation';
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenProps } from '@/types/props';
 
 type MenuItem = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -25,7 +26,7 @@ type MenuItem = {
   params?: any;
 };
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
 
   const menuItems: MenuItem[] = [
@@ -41,7 +42,7 @@ export default function ProfileScreen() {
 
   const handleMenuItemPress = (item: MenuItem) => {
     if (item.screen) {
-      navigation.navigate(item.screen, item.params);
+      navigation.navigate(item.screen as never); //, item.params);
     }
   };
 

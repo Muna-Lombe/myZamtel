@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Home, User, LayoutDashboard, Settings } from 'lucide-react-native';
+import { ScreenProps } from '../../../types/props';
+import { RootStackParamList } from '@/types/navigation';
 
-export default function HomeScreen() {
+export default function HomeScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation();
 
   return (
@@ -17,7 +19,7 @@ export default function HomeScreen() {
         <View style={styles.grid}>
           <TouchableOpacity 
             style={styles.card}
-            onPress={() => navigation.navigate('Dashboard')}
+            onPress={() => navigation.navigate('Dashboard' as keyof RootStackParamList['Dashboard'] )}
           >
             <LayoutDashboard size={24} color="#000" />
             <Text style={styles.cardText}>Dashboard</Text>
@@ -25,7 +27,7 @@ export default function HomeScreen() {
 
           <TouchableOpacity 
             style={styles.card}
-            onPress={() => navigation.navigate('Services')}
+            onPress={() => navigation.navigate('Services' as keyof RootStackParamList['Services'])}
           >
             <Home size={24} color="#000" />
             <Text style={styles.cardText}>Services</Text>
@@ -33,7 +35,7 @@ export default function HomeScreen() {
 
           <TouchableOpacity 
             style={styles.card}
-            onPress={() => navigation.navigate('Profile')}
+            onPress={() => navigation.navigate('Profile' as keyof RootStackParamList['Profile'])}
           >
             <User size={24} color="#000" />
             <Text style={styles.cardText}>Profile</Text>

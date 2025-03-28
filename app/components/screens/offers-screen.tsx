@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Tag } from 'lucide-react-native';
-import { NavigationProp } from '../../../types/navigation';
+import { NavigationProp, RootStackParamList } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type Offer = {
   id: string;
@@ -15,7 +16,7 @@ type Offer = {
   discount: string;
 };
 
-export default function OffersScreen() {
+export default function OffersScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [selectedCategory, setSelectedCategory] = React.useState('All');
 
@@ -96,7 +97,7 @@ export default function OffersScreen() {
           <TouchableOpacity
             key={offer.id}
             style={styles.offerCard}
-            onPress={() => navigation.navigate('OfferDetail', { offer })}
+            onPress={() => navigation.navigate('OfferDetail' , {offer})}
           >
             <Image
               source={{ uri: offer.image }}

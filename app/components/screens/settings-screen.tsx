@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Switch, ScrollView } from 're
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
+import { ScreenProps } from '@/types/props';
 
 type SettingItem = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -61,7 +62,7 @@ const settingsItems: SettingItem[] = [
   },
 ];
 
-export default function SettingsScreen() {
+export default function SettingsScreen({ onNavigate }: ScreenProps) {
   const navigation = useNavigation<NavigationProp>();
   const [settings, setSettings] = React.useState<Record<string, boolean>>({
     pushNotifications: true,
@@ -73,7 +74,7 @@ export default function SettingsScreen() {
   };
 
   const handleNavigation = (screen: keyof RootStackParamList) => {
-    navigation.navigate(screen);
+    navigation.navigate(screen as never);
   };
 
   return (
