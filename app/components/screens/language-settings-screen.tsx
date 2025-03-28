@@ -22,7 +22,7 @@ const languages: Language[] = [
   { code: 'kaa', name: 'Kaonde', nativeName: 'Chikaonde', isSelected: false },
 ];
 
-export default function LanguageSettingsScreen({ onNavigate }: ScreenProps) {
+export default function LanguageSettingsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [selectedLanguage, setSelectedLanguage] = React.useState('en');
 

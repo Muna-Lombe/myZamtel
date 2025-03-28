@@ -59,7 +59,7 @@ const privacySettings: PrivacySetting[] = [
   },
 ];
 
-export default function PrivacySettingsScreen({ onNavigate }: ScreenProps) {
+export default function PrivacySettingsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [settings, setSettings] = React.useState<Record<string, boolean>>({
     locationServices: true,

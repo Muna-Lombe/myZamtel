@@ -61,10 +61,9 @@ const serviceOptions: ServiceOption[] = [
 type Props = {
   visible?: boolean;
   onClose: () => void;
-  onNavigate: ScreenProps['onNavigate']
 };
 
-export default function ServiceOptionsModal({ visible, onClose, onNavigate }: Props ) {
+export default function ServiceOptionsModal({ visible, onClose }: Props ) {
   const navigation = useNavigation<NavigationProp>();
 
   const handleOptionPress = (option: ServiceOption) => {

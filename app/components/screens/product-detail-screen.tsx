@@ -28,13 +28,11 @@ const { width } = Dimensions.get('window');
 
 
 type Props = {
-  onNavigate: ScreenProps['onNavigate'];
   productId: string | null;
 
 }
-export default function ProductDetailScreen({productId, onNavigate }: Props) {
+export default function ProductDetailScreen({ route }: { route: any }) {
   const navigation = useNavigation<NavigationProp>();
-  const route = useRoute();
   const { product } = route.params as RouteParams;
   const [selectedImage, setSelectedImage] = React.useState(0);
   const [isFavorite, setIsFavorite] = React.useState(false);

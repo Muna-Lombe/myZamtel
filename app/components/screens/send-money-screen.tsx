@@ -28,7 +28,7 @@ const recentContacts: Contact[] = [
   { id: '3', name: 'Mike Johnson', phone: '+260 954 321 098', recent: true },
 ];
 
-export default function SendMoneyScreen({ onNavigate }: ScreenProps) {
+export default function SendMoneyScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [amount, setAmount] = useState('');
   const [recipient, setRecipient] = useState('');

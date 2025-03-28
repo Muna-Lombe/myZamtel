@@ -66,7 +66,7 @@ const sampleProducts: Product[] = [
   // Add more sample products as needed
 ];
 
-export default function ShopScreen({ onNavigate }: ScreenProps) {
+export default function ShopScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = useState('');
 

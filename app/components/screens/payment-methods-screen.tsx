@@ -40,7 +40,7 @@ const paymentMethods: PaymentMethod[] = [
   },
 ];
 
-export default function PaymentMethodsScreen({ onNavigate }: ScreenProps) {
+export default function PaymentMethodsScreen() {
   const navigation = useNavigation();
 
   const renderPaymentMethod = (method: PaymentMethod) => (

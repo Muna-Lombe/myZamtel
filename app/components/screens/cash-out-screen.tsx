@@ -6,7 +6,7 @@ import { ArrowLeft, MapPin, Clock, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function CashOutScreen({ onNavigate }: ScreenProps) {
+export default function CashOutScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [amount, setAmount] = React.useState('');
 

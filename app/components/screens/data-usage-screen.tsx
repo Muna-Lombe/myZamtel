@@ -17,7 +17,7 @@ const storageItems: StorageItem[] = [
   { name: 'Media Files', size: '256.8 MB', type: 'media' },
 ];
 
-export default function DataUsageScreen({ onNavigate }: ScreenProps) {
+export default function DataUsageScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   const handleClearCache = () => {

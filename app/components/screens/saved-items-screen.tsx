@@ -53,7 +53,7 @@ const savedItems: SavedItem[] = [
 
 const categories = ['All', 'Electronics', 'Fashion', 'Home', 'Beauty'];
 
-export default function SavedItemsScreen({ onNavigate }: ScreenProps) {
+export default function SavedItemsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [selectedCategory, setSelectedCategory] = useState('All');
 

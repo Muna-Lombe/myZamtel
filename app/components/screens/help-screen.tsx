@@ -19,7 +19,7 @@ type SupportOption = {
   action: () => void;
 };
 
-export default function HelpScreen({ onNavigate }: ScreenProps) {
+export default function HelpScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   const helpCategories: HelpCategory[] = [

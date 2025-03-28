@@ -6,7 +6,7 @@ import { ArrowLeft, CreditCard, Building2, Receipt, ChevronRight } from 'lucide-
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function MakePaymentScreen({ onNavigate }: ScreenProps) {
+export default function MakePaymentScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [amount, setAmount] = React.useState('');
   const [selectedPayment, setSelectedPayment] = React.useState('');

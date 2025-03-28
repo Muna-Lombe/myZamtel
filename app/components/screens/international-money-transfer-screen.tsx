@@ -6,7 +6,7 @@ import { ArrowLeft, Globe, ChevronRight, Search, MapPin } from 'lucide-react-nat
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function InternationalMoneyTransferScreen({ onNavigate }: ScreenProps) {
+export default function InternationalMoneyTransferScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [amount, setAmount] = React.useState('');
   const [selectedCountry, setSelectedCountry] = React.useState('');

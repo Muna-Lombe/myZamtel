@@ -26,7 +26,7 @@ type MenuItem = {
   params?: any;
 };
 
-export default function ProfileScreen({ onNavigate }: ScreenProps) {
+export default function ProfileScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   const menuItems: MenuItem[] = [

@@ -6,7 +6,7 @@ import { ArrowLeft, Search, ChevronRight, Globe, CreditCard } from 'lucide-react
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function InternationalTransferScreen({ onNavigate }: ScreenProps) {
+export default function InternationalTransferScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [selectedCountry, setSelectedCountry] = React.useState('');

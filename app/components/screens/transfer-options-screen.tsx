@@ -50,7 +50,7 @@ const transferOptions: TransferOption[] = [
   },
 ];
 
-export default function TransferOptionsScreen({ onNavigate }: ScreenProps) {
+export default function TransferOptionsScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (

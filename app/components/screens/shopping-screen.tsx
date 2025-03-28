@@ -6,7 +6,7 @@ import { ArrowLeft, Search, ShoppingBag, ChevronRight } from 'lucide-react-nativ
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function ShoppingScreen({ onNavigate }: ScreenProps) {
+export default function ShoppingScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = React.useState('');
 

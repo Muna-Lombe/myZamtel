@@ -6,7 +6,7 @@ import { Home, User, LayoutDashboard, Settings } from 'lucide-react-native';
 import { ScreenProps } from '../../../types/props';
 import { RootStackParamList } from '@/types/navigation';
 
-export default function HomeScreen({ onNavigate }: ScreenProps) {
+export default function HomeScreen() {
   const navigation = useNavigation();
 
   return (

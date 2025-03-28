@@ -53,7 +53,7 @@ const transactions: Transaction[] = [
 
 const filterOptions = ['All', 'Sent', 'Received', 'Payments', 'Withdrawals'];
 
-export default function TransactionHistoryScreen({ onNavigate }: ScreenProps) {
+export default function TransactionHistoryScreen() {
   const navigation = useNavigation();
   const [selectedFilter, setSelectedFilter] = useState('All');
 

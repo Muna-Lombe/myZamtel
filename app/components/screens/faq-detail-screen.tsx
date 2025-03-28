@@ -58,7 +58,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-export default function FAQDetailScreen({ onNavigate }: ScreenProps) {
+export default function FAQDetailScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [animations] = useState(() =>

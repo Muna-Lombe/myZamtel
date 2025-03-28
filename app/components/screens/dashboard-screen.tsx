@@ -6,7 +6,7 @@ import { ArrowLeft, Wallet, History, Bell } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function DashboardScreen({ onNavigate }: ScreenProps) {
+export default function DashboardScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (

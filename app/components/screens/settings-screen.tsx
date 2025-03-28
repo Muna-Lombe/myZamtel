@@ -62,7 +62,7 @@ const settingsItems: SettingItem[] = [
   },
 ];
 
-export default function SettingsScreen({ onNavigate }: ScreenProps) {
+export default function SettingsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [settings, setSettings] = React.useState<Record<string, boolean>>({
     pushNotifications: true,

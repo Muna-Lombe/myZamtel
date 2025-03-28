@@ -6,7 +6,7 @@ import { ArrowLeft, Building2, Receipt, CreditCard, ChevronRight } from 'lucide-
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function PayBillsScreen({ onNavigate }: ScreenProps) {
+export default function PayBillsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = React.useState('');
 

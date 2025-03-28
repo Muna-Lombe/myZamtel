@@ -6,7 +6,7 @@ import { ArrowLeft, Bell, CreditCard, Gift, AlertCircle, ChevronRight } from 'lu
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function NotificationsScreen({ onNavigate }: ScreenProps) {
+export default function NotificationsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [selectedFilter, setSelectedFilter] = React.useState('all');
 

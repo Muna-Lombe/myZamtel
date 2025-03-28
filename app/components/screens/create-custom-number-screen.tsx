@@ -6,7 +6,7 @@ import { ArrowLeft, Search, Check, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function CreateCustomNumberScreen({ onNavigate }: ScreenProps) {
+export default function CreateCustomNumberScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [selectedNumber, setSelectedNumber] = React.useState('');

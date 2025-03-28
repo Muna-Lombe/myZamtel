@@ -13,7 +13,7 @@ type RouteParams = {
   onSuccess: () => void;
 };
 
-export default function PinEntryScreen({ onNavigate }: ScreenProps) {
+export default function PinEntryScreen() {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute();
   const { amount, recipient, type, onSuccess } = route.params as RouteParams;

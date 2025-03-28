@@ -46,7 +46,7 @@ const serviceFeatures: ServiceFeature[] = [
   },
 ];
 
-export default function ServiceShowScreen({ onNavigate }: ScreenProps) {
+export default function ServiceShowScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (

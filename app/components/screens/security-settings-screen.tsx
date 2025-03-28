@@ -17,7 +17,7 @@ type SecurityOption = {
   onToggle?: (value: boolean) => void;
 };
 
-export default function SecuritySettingsScreen({ onNavigate }: ScreenProps) {
+export default function SecuritySettingsScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [biometricEnabled, setBiometricEnabled] = React.useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);

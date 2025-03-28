@@ -84,7 +84,7 @@ const contactOptions: ContactOption[] = [
   },
 ];
 
-export default function SupportScreen({ onNavigate }: ScreenProps) {
+export default function SupportScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (

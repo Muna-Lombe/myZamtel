@@ -16,7 +16,7 @@ type Offer = {
   discount: string;
 };
 
-export default function OffersScreen({ onNavigate }: ScreenProps) {
+export default function OffersScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [selectedCategory, setSelectedCategory] = React.useState('All');
 

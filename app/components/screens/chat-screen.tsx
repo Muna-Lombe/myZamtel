@@ -22,7 +22,7 @@ type Message = {
   timestamp: Date;
 };
 
-export default function ChatScreen({ onNavigate }: ScreenProps) {
+export default function ChatScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [messages, setMessages] = useState<Message[]>([
     {

@@ -6,7 +6,7 @@ import { ArrowLeft, Wallet, CreditCard, Phone, ShoppingCart, Building2 } from 'l
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function ServicesScreen({ onNavigate }: ScreenProps) {
+export default function ServicesScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (

@@ -6,7 +6,7 @@ import { ArrowLeft, Minus, Plus, Trash2, CreditCard } from 'lucide-react-native'
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function CartScreen({ onNavigate }: ScreenProps) {
+export default function CartScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [cartItems, setCartItems] = React.useState([
     {

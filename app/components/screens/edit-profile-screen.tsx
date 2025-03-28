@@ -6,7 +6,7 @@ import { ArrowLeft, Camera, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function EditProfileScreen({ onNavigate }: ScreenProps) {
+export default function EditProfileScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [profileImage, setProfileImage] = React.useState(require('../../../assets/profile.jpg'));
   const [formData, setFormData] = React.useState({

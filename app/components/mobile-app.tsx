@@ -54,63 +54,63 @@ export default function MobileApp() {
   const renderScreen = () => {
     switch (currentScreen) {
       case "home":
-        return <HomeScreen onNavigate={handleNavigate} />
+        return <HomeScreen />
       case "notifications":
-        return <NotificationsScreen onNavigate={handleNavigate}/>
+        return <NotificationsScreen/>
       case "dashboard":
-        return <DashboardScreen onNavigate={handleNavigate} />
+        return <DashboardScreen />
       case "makePayment":
-        return <MakePaymentScreen onNavigate={handleNavigate} />
+        return <MakePaymentScreen />
       case "sendMoney":
-        return <SendMoneyScreen onNavigate={handleNavigate} />
+        return <SendMoneyScreen />
       case "cashOut":
-        return <CashOutScreen onNavigate={handleNavigate} />
+        return <CashOutScreen />
       case "transactionHistory":
-        return <TransactionHistoryScreen onNavigate={handleNavigate} />
+        return <TransactionHistoryScreen />
       case "internationalTransfer":
-        return <InternationalMoneyTransferScreen onNavigate={handleNavigate} />
+        return <InternationalMoneyTransferScreen />
       case "serviceOptions":
-        return <ServiceOptionsModal onClose={()=>""} onNavigate={handleNavigate} />
+        return <ServiceOptionsModal onClose={()=>""} />
       case "pinEntry":
-        return <PinEntryScreen onNavigate={handleNavigate} />
+        return <PinEntryScreen />
       case "sideMenu":
         return <SideMenu onNavigate={handleNavigate} />
       case "profile":
-        return <ProfileScreen onNavigate={handleNavigate} />
+        return <ProfileScreen />
       case "customNumber":
-        return <CreateCustomNumberScreen onNavigate={handleNavigate} />
+        return <CreateCustomNumberScreen />
       case "support":
-        return <SupportScreen onNavigate={handleNavigate} />
+        return <SupportScreen />
       case "privacy":
-        return <PrivacyPolicyScreen onNavigate={handleNavigate} />
+        return <PrivacyPolicyScreen />
       case "security":
-        return <SecuritySettingsScreen onNavigate={handleNavigate} />
+        return <SecuritySettingsScreen />
       case "editProfile":
-        return <EditProfileScreen onNavigate={handleNavigate} />
+        return <EditProfileScreen />
       case "transferOptions":
-        return <TransferOptionsScreen onNavigate={handleNavigate} />
+        return <TransferOptionsScreen />
       case "bankTransfer":
-        return <BankTransferScreen onNavigate={handleNavigate} />
+        return <BankTransferScreen />
       case "otherNetworks":
-        return <OtherNetworksScreen onNavigate={handleNavigate} />
+        return <OtherNetworksScreen />
       case "offers":
-        return <OffersScreen onNavigate={handleNavigate} />
+        return <OffersScreen />
       case "offerDetail":
-        return <OfferDetailScreen onNavigate={handleNavigate} />
+        return <OfferDetailScreen />
       case "help":
-        return <HelpScreen onNavigate={handleNavigate} />
+        return <HelpScreen />
       case "services":
-        return <ServicesScreen onNavigate={handleNavigate} />
+        return <ServicesScreen />
       case "serviceDetail":
-        return <ServiceDetailScreen onNavigate={handleNavigate} /> 
+        return <ServiceDetailScreen /> 
       case "shop":
-        return <ShopScreen onNavigate={handleNavigate} />
+        return <ShopScreen />
       case "productDetail":
-        return <ProductDetailScreen productId={productId} onNavigate={handleNavigate} />
+        return <ProductDetailScreen route={{ productId }} />
       case "cart":
-        return <CartScreen onNavigate={handleNavigate} />
+        return <CartScreen />
       default:
-        return <HomeScreen onNavigate={handleNavigate} />
+        return <HomeScreen />
     }
   }
 

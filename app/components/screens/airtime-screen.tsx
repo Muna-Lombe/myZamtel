@@ -6,7 +6,7 @@ import { ArrowLeft, Phone, Wallet, User } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
 import { ScreenProps } from '@/types/props';
 
-export default function AirtimeScreen({ onNavigate }: ScreenProps) {
+export default function AirtimeScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [phoneNumber, setPhoneNumber] = React.useState('');
   const [amount, setAmount] = React.useState('');

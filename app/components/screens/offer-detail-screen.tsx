@@ -22,7 +22,7 @@ type RouteParams = {
   };
 };
 
-export default function OfferDetailScreen({ onNavigate }: ScreenProps) {
+export default function OfferDetailScreen() {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute();
   const { offer } = route.params as RouteParams;

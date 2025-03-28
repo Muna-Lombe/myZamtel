@@ -11,7 +11,7 @@ type MenuItem = {
   action: () => void;
 };
 
-export default function AboutScreen({ onNavigate }: ScreenProps) {
+export default function AboutScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   const menuItems: MenuItem[] = [

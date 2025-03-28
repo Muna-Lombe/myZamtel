@@ -18,7 +18,7 @@ type Network = {
   }[];
 };
 
-export default function OtherNetworksScreen({ onNavigate }: ScreenProps) {
+export default function OtherNetworksScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   const networks: Network[] = [

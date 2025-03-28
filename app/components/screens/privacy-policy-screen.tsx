@@ -12,7 +12,7 @@ type PolicySection = {
   content: string;
 };
 
-export default function PrivacyPolicyScreen({ onNavigate }: ScreenProps) {
+export default function PrivacyPolicyScreen() {
   const navigation = useNavigation<NavigationProp>();
   const [activeTab, setActiveTab] = React.useState<'privacy' | 'terms'>('privacy');
 
