@@ -1,38 +1,10 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  // Dashboard: undefined;
-  Services: undefined;
-  SendMoney: undefined;
-  BankTransfer: undefined;
-  MakePayment: undefined;
-  Airtime: {
-    network?: string;
-    service?: string;
-  };
   Home: undefined;
-  Notifications: undefined;
-  PayBills: undefined;
-  Shopping: undefined;
-  Cart: undefined;
-  CashOut: undefined;
-  CreateCustomNumber: undefined;
-  EditProfile: undefined;
-  Help: undefined;
-  InternationalTransfer: undefined;
-  OfferDetail:{
-    offer: {
-      id: string,
-      title: string,
-      description: string,
-      image: string,
-      validUntil: string,
-      category: string,
-      discount: string,
-    }
-  }
-  PinEntry: undefined;
-  PrivacyPolicy: undefined;
+  Profile: undefined;
+  Settings: undefined;
+  SecuritySettings: undefined;
   ProductDetail: {
     product: {
       id: string;
@@ -42,33 +14,30 @@ export type RootStackParamList = {
       images: string[];
       rating: number;
       reviews: number;
-      seller: {
-        name: string;
-        rating: number;
-      };
+      seller: string;
       category: string;
-      specifications: {
-        [key: string]: string;
-      };
+      specifications: Record<string, string>;
     };
   };
-  Profile: undefined;
-  SecuritySettings: undefined;
-  Settings: undefined;
+  PrivacyPolicy: undefined;
   LanguageSettings: undefined;
   DataUsage: undefined;
   PrivacySettings: undefined;
-  About: undefined;
-  Chat: undefined;
-  FAQDetail: undefined;
   PaymentMethods: undefined;
-  TransactionHistory: undefined;
   SavedItems: undefined;
+  TransactionHistory: undefined;
+  Dashboard: undefined;
+  Services: undefined;
+  Shop: undefined;
+  Help: undefined;
+  Support: undefined;
+  PayBills: undefined;
+  MobileMoney: undefined;
+  Offers: undefined;
+  MakePayment: undefined;
+  Notifications: undefined;
   ProfileVisibility: undefined;
   TransactionPrivacy: undefined;
 };
 
-export type NavigationProp = {
-  navigate: (screen: keyof RootStackParamList, params?: any) => void;
-  goBack: () => void;
-}; 
+export type NavigationProp = NativeStackNavigationProp<RootStackParamList>; 
