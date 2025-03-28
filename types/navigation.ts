@@ -40,13 +40,15 @@ export type RootStackParamList = {
       id: string;
       name: string;
       price: number;
-      description?: string;
-      images?: string[];
-      rating?: number;
-      reviews?: number;
-      seller?: string;
-      category?: string;
-      specifications?: Record<string, string>;
+      description: string;
+      images: string[];
+      rating: number;
+      reviews: number;
+      seller: string;
+      category: string;
+      specifications: {
+        [key: string]: string;
+      };
     };
   };
   Profile: undefined;

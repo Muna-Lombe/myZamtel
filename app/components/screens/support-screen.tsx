@@ -1,91 +1,115 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  TextInput,
+  Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationProp, RootStackParamList } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { NavigationProp } from '../../../types/navigation';
 
-type SupportCategory = {
+type FAQ = {
   id: string;
-  title: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  screen: 'Help' | 'Chat';
+  question: string;
+  answer: string;
+  isExpanded: boolean;
 };
 
-const supportCategories: SupportCategory[] = [
-  {
-    id: '1',
-    title: 'Payment Issues',
-    icon: 'card-outline',
-    screen: 'Help',
-  },
-  {
-    id: '2',
-    title: 'Network & Coverage',
-    icon: 'wifi-outline',
-    screen: 'Help',
-  },
-  {
-    id: '3',
-    title: 'Account Security',
-    icon: 'shield-checkmark-outline',
-    screen: 'Help',
-  },
-  {
-    id: '4',
-    title: 'Account Settings',
-    icon: 'settings-outline',
-    screen: 'Help',
-  },
-  {
-    id: '5',
-    title: 'General Help',
-    icon: 'help-circle-outline',
-    screen: 'Help',
-  },
-];
-
-type ContactOption = {
+type SupportOption = {
   id: string;
   title: string;
   description: string;
   icon: keyof typeof Ionicons.glyphMap;
-  screen?: 'Help' | 'Chat';
-  action?: string;
+  action: () => void;
 };
 
-const contactOptions: ContactOption[] = [
-  {
-    id: '1',
-    title: 'Live Chat',
-    description: 'Chat with our support team',
-    icon: 'chatbubbles',
-    screen: 'Chat',
-  },
-  {
-    id: '2',
-    title: 'Call Center',
-    description: 'Call us at 111',
-    icon: 'call',
-    action: 'tel:111',
-  },
-  {
-    id: '3',
-    title: 'WhatsApp',
-    description: 'Message us on WhatsApp',
-    icon: 'logo-whatsapp',
-    action: 'whatsapp://send?phone=260111222333',
-  },
-];
-
-export default function SupportScreen({ onNavigate }: ScreenProps) {
+export default function SupportScreen() {
   const navigation = useNavigation<NavigationProp>();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [faqs, setFaqs] = useState<FAQ[]>([
+    {
+      id: '1',
+      question: 'How do I reset my PIN?',
+      answer: 'To reset your PIN, go to Security Settings, select "Change PIN", and follow the instructions. You will need to verify your identity with a one-time password sent to your registered mobile number.',
+      isExpanded: false,
+    },
+    {
+      id: '2',
+      question: 'What are the transaction limits?',
+      answer: 'Standard daily transaction limits are K10,000 for transfers and K5,000 for withdrawals. You can request a limit increase by visiting any Zamtel shop with your ID.',
+      isExpanded: false,
+    },
+    {
+      id: '3',
+      question: 'How do I add money to my account?',
+      answer: 'You can add money to your account through bank transfer, at any Zamtel shop, or through authorized agents nationwide. Deposits are usually reflected instantly.',
+      isExpanded: false,
+    },
+    {
+      id: '4',
+      question: 'Is there a fee for transactions?',
+      answer: 'Transfers between Zamtel Money users are free. Withdrawals and transfers to bank accounts or other mobile money providers may incur a small fee based on the amount. See our fee schedule for details.',
+      isExpanded: false,
+    },
+    {
+      id: '5',
+      question: 'How do I report a suspicious transaction?',
+      answer: 'If you notice any unauthorized or suspicious activity, please contact our customer support immediately at 111 (toll-free from a Zamtel line) or email us at support@zamtel.zm.',
+      isExpanded: false,
+    },
+  ]);
+
+  const supportOptions: SupportOption[] = [
+    {
+      id: '1',
+      title: 'Live Chat',
+      description: 'Chat with our support team',
+      icon: 'chatbubble-ellipses',
+      action: () => navigation.navigate('Chat'),
+    },
+    {
+      id: '2',
+      title: 'Call Center',
+      description: 'Call us at 111 (toll-free)',
+      icon: 'call',
+      action: () => Linking.openURL('tel:111'),
+    },
+    {
+      id: '3',
+      title: 'Email Support',
+      description: 'support@zamtel.zm',
+      icon: 'mail',
+      action: () => Linking.openURL('mailto:support@zamtel.zm'),
+    },
+    {
+      id: '4',
+      title: 'Find a Shop',
+      description: 'Locate the nearest Zamtel shop',
+      icon: 'location',
+      action: () => {
+        // In a real app, this would navigate to a map or location finder
+        alert('This feature will be available soon.');
+      },
+    },
+  ];
+
+  const toggleFAQ = (id: string) => {
+    setFaqs(
+      faqs.map((faq) =>
+        faq.id === id ? { ...faq, isExpanded: !faq.isExpanded } : faq
+      )
+    );
+  };
+
+  const filteredFAQs = faqs.filter(
+    (faq) =>
+      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <View style={styles.container}>
@@ -93,64 +117,89 @@ export default function SupportScreen({ onNavigate }: ScreenProps) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="#333" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Support</Text>
+        <Text style={styles.headerTitle}>Help & Support</Text>
         <View style={{ width: 24 }} />
       </View>
 
       <ScrollView style={styles.content}>
         <View style={styles.searchContainer}>
-          <TouchableOpacity 
-            style={styles.searchButton}
-            onPress={() => navigation.navigate('Help')}
-          >
-            <Ionicons name="search" size={20} color="#666" />
-            <Text style={styles.searchText}>Search help articles</Text>
-          </TouchableOpacity>
+          <Ionicons name="search" size={20} color="#999" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search for help topics"
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity onPress={() => setSearchQuery('')}>
+              <Ionicons name="close-circle" size={20} color="#999" />
+            </TouchableOpacity>
+          )}
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>How can we help you?</Text>
-          <View style={styles.categoriesGrid}>
-            {supportCategories.map((category) => (
+        <View style={styles.supportOptionsContainer}>
+          <Text style={styles.sectionTitle}>Contact Us</Text>
+          <View style={styles.optionsGrid}>
+            {supportOptions.map((option) => (
               <TouchableOpacity
-                key={category.id}
-                style={styles.categoryItem}
-                onPress={() => navigation.navigate(category.screen)}
+                key={option.id}
+                style={styles.optionCard}
+                onPress={option.action}
               >
-                <View style={styles.categoryIcon}>
-                  <Ionicons name={category.icon} size={24} color="#10B981" />
+                <View style={styles.optionIcon}>
+                  <Ionicons name={option.icon} size={24} color="#10B981" />
                 </View>
-                <Text style={styles.categoryTitle}>{category.title}</Text>
+                <Text style={styles.optionTitle}>{option.title}</Text>
+                <Text style={styles.optionDescription}>{option.description}</Text>
               </TouchableOpacity>
             ))}
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Contact Us</Text>
-          {contactOptions.map((option) => (
-            <TouchableOpacity
-              key={option.id}
-              style={styles.contactItem}
-              onPress={() => {
-                if (option.screen) {
-                  navigation.navigate(option.screen);
-                } else if (option.action) {
-                  // Handle external actions (tel:, whatsapp:, etc.)
-                  console.log('External action:', option.action);
-                }
-              }}
-            >
-              <View style={styles.contactIcon}>
-                <Ionicons name={option.icon} size={24} color="#10B981" />
-              </View>
-              <View style={styles.contactInfo}>
-                <Text style={styles.contactTitle}>{option.title}</Text>
-                <Text style={styles.contactDescription}>{option.description}</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={20} color="#999" />
-            </TouchableOpacity>
-          ))}
+        <View style={styles.faqContainer}>
+          <Text style={styles.sectionTitle}>Frequently Asked Questions</Text>
+          {filteredFAQs.length > 0 ? (
+            filteredFAQs.map((faq) => (
+              <TouchableOpacity
+                key={faq.id}
+                style={styles.faqItem}
+                onPress={() => toggleFAQ(faq.id)}
+              >
+                <View style={styles.faqHeader}>
+                  <Text style={styles.faqQuestion}>{faq.question}</Text>
+                  <Ionicons
+                    name={faq.isExpanded ? 'chevron-up' : 'chevron-down'}
+                    size={20}
+                    color="#666"
+                  />
+                </View>
+                {faq.isExpanded && (
+                  <Text style={styles.faqAnswer}>{faq.answer}</Text>
+                )}
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text style={styles.noResultsText}>
+              No results found for "{searchQuery}"
+            </Text>
+          )}
+        </View>
+
+        <View style={styles.feedbackContainer}>
+          <Text style={styles.sectionTitle}>Rate Our App</Text>
+          <Text style={styles.feedbackText}>
+            We value your feedback. Please take a moment to rate our app.
+          </Text>
+          <View style={styles.ratingContainer}>
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <TouchableOpacity key={rating} style={styles.ratingButton}>
+                <Ionicons name="star" size={32} color="#DDD" />
+              </TouchableOpacity>
+            ))}
+          </View>
+          <TouchableOpacity style={styles.submitButton}>
+            <Text style={styles.submitButtonText}>Submit Feedback</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -179,21 +228,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   searchContainer: {
-    padding: 16,
-  },
-  searchButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F3F4F6',
     padding: 12,
+    margin: 16,
+    backgroundColor: '#f5f5f5',
     borderRadius: 8,
   },
-  searchText: {
-    marginLeft: 8,
-    color: '#666',
-    fontSize: 16,
+  searchIcon: {
+    marginRight: 8,
   },
-  section: {
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#333',
+  },
+  supportOptionsContainer: {
     padding: 16,
   },
   sectionTitle: {
@@ -202,57 +252,98 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 16,
   },
-  categoriesGrid: {
+  optionsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    margin: -8,
+    justifyContent: 'space-between',
   },
-  categoryItem: {
-    width: '33.33%',
-    padding: 8,
-    alignItems: 'center',
+  optionCard: {
+    width: '48%',
+    backgroundColor: '#f9f9f9',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
   },
-  categoryIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+  optionIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     backgroundColor: '#E8FFF5',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
+    marginBottom: 12,
   },
-  categoryTitle: {
-    fontSize: 12,
+  optionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
     color: '#333',
-    textAlign: 'center',
+    marginBottom: 4,
   },
-  contactItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 12,
+  optionDescription: {
+    fontSize: 14,
+    color: '#666',
+  },
+  faqContainer: {
+    padding: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  },
+  faqItem: {
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+    paddingVertical: 12,
   },
-  contactIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#E8FFF5',
+  faqHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
   },
-  contactInfo: {
-    flex: 1,
-  },
-  contactTitle: {
+  faqQuestion: {
     fontSize: 16,
     fontWeight: '500',
     color: '#333',
+    flex: 1,
+    paddingRight: 8,
   },
-  contactDescription: {
+  faqAnswer: {
     fontSize: 14,
     color: '#666',
-    marginTop: 2,
+    marginTop: 8,
+    lineHeight: 20,
+  },
+  noResultsText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 16,
+  },
+  feedbackContainer: {
+    padding: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  },
+  feedbackText: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 16,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 16,
+  },
+  ratingButton: {
+    marginHorizontal: 8,
+  },
+  submitButton: {
+    backgroundColor: '#10B981',
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 }); 

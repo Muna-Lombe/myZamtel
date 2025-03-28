@@ -4,122 +4,180 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Modal,
   ScrollView,
+  Modal,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
 
 type ServiceOption = {
   id: string;
-  name: string;
-  icon: 'send' | 'receipt' | 'wallet' | 'phone-portrait' | 'business';
-  screen: 'SendMoney' | 'PayBills' | 'MobileMoney' | 'MakePayment';
+  title: string;
   description: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  screen: string;
 };
 
-const serviceOptions: ServiceOption[] = [
+type ServiceCategory = {
+  id: string;
+  title: string;
+  options: ServiceOption[];
+};
+
+const serviceCategories: ServiceCategory[] = [
   {
-    id: '1',
-    name: 'Send Money',
-    icon: 'send',
-    screen: 'SendMoney',
-    description: 'Transfer money to other Zamtel users',
+    id: 'financial',
+    title: 'Financial Services',
+    options: [
+      {
+        id: 'banking',
+        title: 'Banking Services',
+        description: 'Access banking services and transfers',
+        icon: 'business',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'loans',
+        title: 'Loans & Credit',
+        description: 'Apply for loans and credit services',
+        icon: 'cash',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'insurance',
+        title: 'Insurance',
+        description: 'Purchase and manage insurance policies',
+        icon: 'shield-checkmark',
+        screen: 'ServiceShow',
+      },
+    ],
   },
   {
-    id: '2',
-    name: 'Pay Bills',
-    icon: 'receipt',
-    screen: 'PayBills',
-    description: 'Pay your utility bills and subscriptions',
+    id: 'utility',
+    title: 'Bill Payments',
+    options: [
+      {
+        id: 'electricity',
+        title: 'Electricity',
+        description: 'Pay for ZESCO electricity',
+        icon: 'flash',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'water',
+        title: 'Water',
+        description: 'Pay water bills',
+        icon: 'water',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'tv',
+        title: 'TV & Internet',
+        description: 'Pay for TV and internet services',
+        icon: 'tv',
+        screen: 'ServiceShow',
+      },
+    ],
   },
   {
-    id: '3',
-    name: 'Mobile Money',
-    icon: 'wallet',
-    screen: 'MobileMoney',
-    description: 'Access your mobile money account',
-  },
-  {
-    id: '4',
-    name: 'Buy Airtime',
-    icon: 'phone-portrait',
-    screen: 'MakePayment',
-    description: 'Purchase airtime for any network',
-  },
-  {
-    id: '5',
-    name: 'Bank Transfer',
-    icon: 'business',
-    screen: 'MakePayment',
-    description: 'Transfer to and from your bank account',
+    id: 'telecom',
+    title: 'Telecom Services',
+    options: [
+      {
+        id: 'airtime',
+        title: 'Airtime & Data',
+        description: 'Purchase airtime and data bundles',
+        icon: 'phone-portrait',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'voicebundles',
+        title: 'Voice Bundles',
+        description: 'Buy voice bundles for local and international calls',
+        icon: 'call',
+        screen: 'ServiceShow',
+      },
+      {
+        id: 'devices',
+        title: 'Device Plans',
+        description: 'Purchase phones and devices on installment',
+        icon: 'hardware-chip',
+        screen: 'ServiceShow',
+      },
+    ],
   },
 ];
 
-type Props = {
-  visible?: boolean;
+type ServiceOptionsModalProps = {
+  visible: boolean;
   onClose: () => void;
-  onNavigate: ScreenProps['onNavigate']
 };
 
-export default function ServiceOptionsModal({ visible, onClose, onNavigate }: Props ) {
+export default function ServiceOptionsModal({ visible, onClose }: ServiceOptionsModalProps) {
   const navigation = useNavigation<NavigationProp>();
 
-  const handleOptionPress = (option: ServiceOption) => {
+  const handleServiceSelect = (service: ServiceOption) => {
     onClose();
-    navigation.navigate(option.screen);
+    navigation.navigate('ServiceShow', {
+      serviceId: service.id,
+      serviceName: service.title,
+      serviceDescription: service.description,
+    });
   };
 
   return (
     <Modal
-      visible={visible}
       animationType="slide"
       transparent={true}
+      visible={visible}
       onRequestClose={onClose}
     >
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>Services</Text>
-            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>Services</Text>
+            <TouchableOpacity onPress={onClose}>
               <Ionicons name="close" size={24} color="#333" />
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={styles.optionsList}>
-            {serviceOptions.map((option) => (
-              <TouchableOpacity
-                key={option.id}
-                style={styles.optionItem}
-                onPress={() => handleOptionPress(option)}
-              >
-                <View style={styles.optionIcon}>
-                  <Ionicons name={option.icon} size={24} color="#10B981" />
-                </View>
-                <View style={styles.optionInfo}>
-                  <Text style={styles.optionName}>{option.name}</Text>
-                  <Text style={styles.optionDescription}>
-                    {option.description}
-                  </Text>
-                </View>
-                <Ionicons name="chevron-forward" size={20} color="#999" />
-              </TouchableOpacity>
+          <ScrollView style={styles.content}>
+            {serviceCategories.map((category) => (
+              <View key={category.id} style={styles.categorySection}>
+                <Text style={styles.categoryTitle}>{category.title}</Text>
+                {category.options.map((option) => (
+                  <TouchableOpacity
+                    key={option.id}
+                    style={styles.serviceItem}
+                    onPress={() => handleServiceSelect(option)}
+                  >
+                    <View style={styles.serviceIcon}>
+                      <Ionicons name={option.icon} size={24} color="#10B981" />
+                    </View>
+                    <View style={styles.serviceInfo}>
+                      <Text style={styles.serviceTitle}>{option.title}</Text>
+                      <Text style={styles.serviceDescription}>{option.description}</Text>
+                    </View>
+                    <Ionicons name="chevron-forward" size={20} color="#999" />
+                  </TouchableOpacity>
+                ))}
+              </View>
             ))}
-          </ScrollView>
 
-          <View style={styles.footer}>
-            <TouchableOpacity 
-              style={styles.allServicesButton}
-              onPress={() => {
-                onClose();
-                navigation.navigate('Services');
-              }}
-            >
-              <Text style={styles.allServicesText}>View All Services</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.promoSection}>
+              <Text style={styles.promoTitle}>Special Offers</Text>
+              <View style={styles.promoCard}>
+                <Text style={styles.promoCardTitle}>50% off on first transaction</Text>
+                <Text style={styles.promoCardDescription}>
+                  Get 50% off on your first bill payment (up to K50)
+                </Text>
+                <TouchableOpacity style={styles.promoButton}>
+                  <Text style={styles.promoButtonText}>View Offer</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
         </View>
       </View>
     </Modal>
@@ -134,11 +192,11 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#fff',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    maxHeight: '80%',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    height: '90%',
   },
-  header: {
+  modalHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -146,25 +204,33 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  headerTitle: {
+  modalTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
   },
-  closeButton: {
-    padding: 4,
+  content: {
+    flex: 1,
   },
-  optionsList: {
+  categorySection: {
     padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
   },
-  optionItem: {
+  categoryTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 12,
+  },
+  serviceItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: '#f5f5f5',
   },
-  optionIcon: {
+  serviceIcon: {
     width: 40,
     height: 40,
     borderRadius: 20,
@@ -173,33 +239,55 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 12,
   },
-  optionInfo: {
+  serviceInfo: {
     flex: 1,
   },
-  optionName: {
+  serviceTitle: {
     fontSize: 16,
     fontWeight: '500',
     color: '#333',
   },
-  optionDescription: {
+  serviceDescription: {
     fontSize: 14,
     color: '#666',
     marginTop: 2,
   },
-  footer: {
+  promoSection: {
     padding: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
+    marginBottom: 24,
   },
-  allServicesButton: {
-    backgroundColor: '#F3F4F6',
-    borderRadius: 8,
-    padding: 16,
-    alignItems: 'center',
-  },
-  allServicesText: {
-    color: '#333',
+  promoTitle: {
     fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 12,
+  },
+  promoCard: {
+    backgroundColor: '#E8FFF5',
+    borderRadius: 12,
+    padding: 16,
+  },
+  promoCardTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#10B981',
+    marginBottom: 8,
+  },
+  promoCardDescription: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 12,
+  },
+  promoButton: {
+    backgroundColor: '#10B981',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
+  },
+  promoButtonText: {
+    color: '#fff',
+    fontSize: 14,
     fontWeight: '500',
   },
 }); 
