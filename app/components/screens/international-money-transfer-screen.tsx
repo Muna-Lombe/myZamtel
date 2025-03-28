@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Globe, ChevronRight, Search, MapPin } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { ScreenProps } from '../../../types/props';
 
 export default function InternationalMoneyTransferScreen() {
   const navigation = useNavigation<NavigationProp>();

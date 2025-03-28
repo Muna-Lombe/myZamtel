@@ -10,7 +10,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { ScreenProps } from '../../../types/props';
 
 type ServiceFeature = {
   id: string;

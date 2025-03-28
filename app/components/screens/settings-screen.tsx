@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Switch, ScrollView } from 're
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList, NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { ScreenProps } from '../../../types/props';
 
 type SettingItem = {
   icon: keyof typeof Ionicons.glyphMap;

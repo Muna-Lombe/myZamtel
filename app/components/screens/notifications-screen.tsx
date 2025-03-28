@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Bell, CreditCard, Gift, AlertCircle, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { ScreenProps } from '../../../types/props';
 
 export default function NotificationsScreen() {
   const navigation = useNavigation<NavigationProp>();

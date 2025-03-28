@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Tag } from 'lucide-react-native';
 import { NavigationProp, RootStackParamList } from '../../../types/navigation';
-import { ScreenProps } from '@/types/props';
+import { ScreenProps } from '../../../types/props';
 
 type Offer = {
   id: string;
