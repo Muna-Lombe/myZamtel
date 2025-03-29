@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Minus, Plus, Trash2, CreditCard } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 export default function CartScreen() {
   const navigation = useNavigation<NavigationProp>();
@@ -14,14 +14,14 @@ export default function CartScreen() {
       name: 'Smartphone',
       price: '2,500.00',
       quantity: 1,
-      image: require('../../../assets/phone.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
     {
       id: 2,
       name: 'Headphones',
       price: '500.00',
       quantity: 2,
-      image: require('../../../assets/headphones.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
   ]);
 

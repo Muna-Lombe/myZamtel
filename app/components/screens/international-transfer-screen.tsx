@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Search, ChevronRight, Globe, CreditCard } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 export default function InternationalTransferScreen() {
   const navigation = useNavigation<NavigationProp>();
@@ -17,21 +17,21 @@ export default function InternationalTransferScreen() {
       id: 'uk',
       name: 'United Kingdom',
       code: 'GBP',
-      flag: require('../../../assets/flags/uk.png'),
+      flag: require('../../../assets/placeholder.png'),
       rate: '0.032',
     },
     {
       id: 'us',
       name: 'United States',
       code: 'USD',
-      flag: require('../../../assets/flags/us.png'),
+      flag: require('../../../assets/placeholder.png'),
       rate: '0.040',
     },
     {
       id: 'sa',
       name: 'South Africa',
       code: 'ZAR',
-      flag: require('../../../assets/flags/sa.png'),
+      flag: require('../../../assets/placeholder.png'),
       rate: '0.75',
     },
   ];

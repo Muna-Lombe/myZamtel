@@ -13,7 +13,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 type Contact = {
   id: string;

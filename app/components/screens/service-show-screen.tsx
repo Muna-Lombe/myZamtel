@@ -10,7 +10,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 type ServiceFeature = {
   id: string;
@@ -64,7 +64,7 @@ export default function ServiceShowScreen() {
       <ScrollView style={styles.content}>
         <View style={styles.heroSection}>
           <Image
-            source={require('../../../assets/service-hero.png')}
+            source={require('../../../assets/placeholder.png')}
             style={styles.heroImage}
             resizeMode="cover"
           />

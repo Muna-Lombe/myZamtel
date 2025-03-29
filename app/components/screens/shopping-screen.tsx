@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Search, ShoppingBag, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 export default function ShoppingScreen() {
   const navigation = useNavigation<NavigationProp>();
@@ -14,22 +14,22 @@ export default function ShoppingScreen() {
     {
       id: 'electronics',
       name: 'Electronics',
-      image: require('../../../assets/electronics.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
     {
       id: 'fashion',
       name: 'Fashion',
-      image: require('../../../assets/fashion.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
     {
       id: 'home',
       name: 'Home & Living',
-      image: require('../../../assets/home.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
     {
       id: 'beauty',
       name: 'Beauty',
-      image: require('../../../assets/beauty.jpg'),
+      image: require('../../../assets/placeholder.png'),
     },
   ];
 
@@ -38,21 +38,21 @@ export default function ShoppingScreen() {
       id: 1,
       name: 'Smartphone',
       price: '2,500.00',
-      image: require('../../../assets/phone.jpg'),
+      image: require('../../../assets/placeholder.png'),
       rating: 4.5,
     },
     {
       id: 2,
       name: 'Laptop',
       price: '8,500.00',
-      image: require('../../../assets/laptop.jpg'),
+      image: require('../../../assets/placeholder.png'),
       rating: 4.8,
     },
     {
       id: 3,
       name: 'Headphones',
       price: '500.00',
-      image: require('../../../assets/headphones.jpg'),
+      image: require('../../../assets/placeholder.png'),
       rating: 4.2,
     },
   ];

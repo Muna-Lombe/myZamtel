@@ -4,11 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Camera, ChevronRight } from 'lucide-react-native';
 import { NavigationProp } from '../../../types/navigation';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 export default function EditProfileScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const [profileImage, setProfileImage] = React.useState(require('../../../assets/profile.jpg'));
+  const [profileImage, setProfileImage] = React.useState(require('../../../assets/avatar.png'));
   const [formData, setFormData] = React.useState({
     firstName: 'John',
     lastName: 'Doe',

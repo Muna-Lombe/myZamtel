@@ -17,7 +17,7 @@ import {
 } from 'lucide-react-native';
 import { NavigationProp, RootStackParamList } from '../../../types/navigation';
 import { Ionicons } from '@expo/vector-icons';
-import { ScreenProps } from '../../../types/props';
+import { ScreenProps } from '../../../types/props';//'@/types/props';
 
 type MenuItem = {
   icon: keyof typeof Ionicons.glyphMap;
